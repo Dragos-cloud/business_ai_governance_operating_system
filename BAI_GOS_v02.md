@@ -52,11 +52,11 @@ This reframe is foundational to everything that follows. BAI GOS provides the ar
 
 BAI GOS sits primarily within Stage 3 (GOVERN) of the ORAND Business Operating Model for Agentic AI, but its reach spans three of the four stages:
 
-| Stage | ORAND Instrument | BAI GOS Contribution |
-|---|---|---|
-| 1 — SCAN | Agentic Opportunity Map | Portfolio Steering layer (Layer 8) feeds strategic alignment data into SCAN |
-| 2 — DESIGN | PAiD | Policy Compiler and Canonicalization Gate enforce the process specifications PAiD produces |
-| 3 — GOVERN | RAEO | BAI GOS is the executable implementation layer for RAEO governance decisions |
+| Stage       | ORAND Instrument | BAI GOS Contribution |
+|-------------|---|---|
+| 1 — SCAN    | Agentic Opportunity Map | Portfolio Steering layer (Layer 8) feeds strategic alignment data into SCAN |
+| 2 — DESIGN  | PAiD  | Policy Compiler and Canonicalization Gate enforce the process specifications PAiD produces |
+| 3 — GOVERN  | RAEO                      | BAI GOS is the executable implementation layer for RAEO governance decisions |
 | 4 — OPERATE | Agentic Operations Rhythm | Evidence & Assurance layer (Layer 7) and Portfolio Steering (Layer 8) supply the operational telemetry OPERATE consumes |
 
 BAI GOS is the technical implementation of Stage 3 that makes Stages 2 and 4 governable at runtime.
@@ -99,38 +99,38 @@ Grouped into three functional zones:
 
 **The Control Plane (Layers 1–3)**
 
-| Layer | Name | Function |
-|---|---|---|
-| 1 | Strategic Control | Captures business intent, Work Type portfolio, autonomy targets, and always-true constraints. The topmost governance source — never bypassed by local optimisations. |
-| 2 | Governance Repository | Git-like versioned source of governance truth. Stores AgentSpec, PolicyBundles, DMN decisions, BPMN enforcement points, canonical schemas, mapping sets, rollback plans, and evidence bundles. |
-| 3 | Policy Compiler | Translates business policy into machine-readable, runtime-enforceable constraints. Bridges the semantic gap between "business approved this policy" and "the runtime knows what to do." |
+| Layer | Name                  | Function                                                                                                                                                                               |
+|-------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1     | Strategic Control     | Captures business intent, Work Type portfolio, autonomy targets, and always-true constraints. The topmost governance source — never bypassed by local optimisations.                    
+| 2     | Governance Repository | Git-like versioned source of governance truth. Stores AgentSpec, PolicyBundles, DMN decisions, BPMN enforcement points, canonical schemas, mapping sets, rollback plans, and evidence bundles. |
+| 3     | Policy Compiler       | Translates business policy into machine-readable, runtime-enforceable constraints. Bridges the semantic gap between "business approved this policy" and "the runtime knows what to do." |
 
 **The Execution Fabric (Layers 4–6)**
 
-| Layer | Name | Function |
-|---|---|---|
-| 4 | Enforcement Gate | Enforces runtime permissions, tier boundaries, approval requirements, tool scopes, side-effect restrictions, and escalation rules. The only authorised path to consequential action. |
-| 5 | Data Trust Layer | Canonicalization Gate + Escrow. Validates inputs via schema checks, mapping currency verification, normalisation, and ambiguity handling. Returns PASS / PASS_WITH_WARNINGS / FAIL_ESCROW. |
-| 6 | Orchestration | Manages active workflows — agent invocation, state, tool calls, human handoffs, retries, escalation, and incident routing. Consumes policy; does not own it. |
+| Layer | Name             | Function                                                                                                                                                                                   |
+|-------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 4     | Enforcement Gate | Enforces runtime permissions, tier boundaries, approval requirements, tool scopes, side-effect restrictions, and escalation rules. The only authorised path to consequential action.       |
+| 5     | Data Trust Layer | Canonicalization Gate + Escrow. Validates inputs via schema checks, mapping currency verification, normalisation, and ambiguity handling. Returns PASS / PASS_WITH_WARNINGS / FAIL_ESCROW. |
+| 6     | Orchestration    | Manages active workflows — agent invocation, state, tool calls, human handoffs, retries, escalation, and incident routing. Consumes policy; does not own it.                               |
 
 **The Feedback Loop (Layers 7–8)**
 
-| Layer | Name | Function |
-|---|---|---|
-| 7 | Evidence Layer | Captures tamper-evident, immutable traces linking every runtime event to its governance version, business context version, and decision logic. |
-| 8 | Portfolio Steering | Ensures the entire agent portfolio remains aligned to business intent. Detects drift, evaluates tier promotion/demotion evidence, flags strategic responsiveness failures. |
+| Layer | Name               | Function                                                                                                                                                                   |
+|-------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 7     | Evidence Layer     | Captures tamper-evident, immutable traces linking every runtime event to its governance version, business context version, and decision logic.                             |
+| 8     | Portfolio Steering | Ensures the entire agent portfolio remains aligned to business intent. Detects drift, evaluates tier promotion/demotion evidence, flags strategic responsiveness failures. |
 
 #### The 5 Business Context Management Layers
 
 These layers form the *semantic middle* — the governed bridge between abstract policy and executable constraints. They determine under what conditions a policy, decision, or agent action is valid.
 
-| Layer | Name | Function |
-|---|---|---|
-| C1 | Strategic Context | Defines high-level intent and always-true constraints. Connects Work Types to the business objectives they serve. |
-| C2 | Operating Context | Manages the specific environment in which a Work Type runs — region, business unit, legal entity, fiscal period. |
-| C3 | Decision Context | Provides parameters for DMN logic — tolerance values, approval thresholds, duplicate windows. Prevents overgeneralised rules from applying outside their intended scope. |
-| C4 | Data Translation Context (Interpretation Record) | Holds the assumptions needed for accurate data interpretation — locale, currency conventions, source system schema fingerprint, mapping set version. Feeds the Canonicalization Gate. |
-| C5 | Exception & Escrow Context | Defines the posture and safety rules for suspended cases — SLA, resolver role, WIP limits, stop-the-line thresholds, timeout actions. |
+| Layer | Name                                             | Function                                                                                                                                                     |
+|-------|--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| C1    | Strategic Context                                | Defines high-level intent and always-true constraints. Connects Work Types to the business objectives they serve.                                            |
+| C2    | Operating Context                                | Manages the specific environment in which a Work Type runs - region, business unit, legal entity, fiscal period.                                             |
+| C3    | Decision Context                                 | Provides parameters for DMN logic - tolerance values, approval thresholds, duplicate windows. Prevents overgeneralised rules from applying outside their intended scope. |
+| C4    | Data Translation Context (Interpretation Record) | Holds the assumptions needed for accurate data interpretation - locale, currency conventions, source system schema fingerprint, mapping set version. Feeds the Canonicalization Gate. |
+| C5    | Exception & Escrow Context                       | Defines the posture and safety rules for suspended cases - SLA, resolver role, WIP limits, stop-the-line thresholds, timeout actions.                        |
 
 #### Why the Semantic Middle Matters
 
@@ -224,69 +224,31 @@ These states make governance legible. A system that cannot declare its current c
 
 Each Work Type maps across both planes through 17 governance domains:
 
-| Domain | Primary Owner | BAI GOS Artifact | IT Control |
-|---|---|---|---|
-| Strategy & Portfolio | Strategy + Architecture | Agentic Opportunity Map | Enterprise architecture portfolio |
-| Work Type | Business process owner | Work Type definition | Application/service catalog |
-| Decision | Business + Risk | DMN decision tables | Decision service / rule engine |
-| Tiered Authority | Risk + Security | Tier model (1/2/3) | RBAC / permission model |
-| Policy | Risk / Compliance | Policy Bundle | Policy engine |
-| Data | Data governance + IT | Canonical schema + mapping sets | Data governance platform |
-| Data Quality & Escrow | Operations | Escrow rules | Data quality monitoring |
-| Agent | AI platform team | AgentSpec | Agent registry |
-| Model | AI platform governance | Model dependency declaration | Model registry |
-| Tool | IT platform | Tool permission matrix | API gateway / service mesh |
-| Identity | Security | Actor definition | IAM |
-| Security | CISO | Security constraints | Security architecture |
-| Change | DevOps | Governance repository | CI/CD pipeline |
-| Monitoring | Operations | Monitoring policy | Observability stack |
-| Incident | Security + Ops | Incident playbooks | SOC / incident response |
-| Assurance | Risk + Internal Audit | Assurance tests | Testing frameworks |
-| Regulatory | Legal / Compliance | Regulatory control mapping | Compliance platform |
+| Domain                      | Primary Owner          | BAI GOS Artifact                | IT Control                        |
+|-----------------------------|------------------------|---------------------------------|-----------------------------------|
+| Strategy & Portfolio        | Strategy + Architecture| Agentic Opportunity Map         | Enterprise architecture portfolio |
+| Work Type                   | Business process owner | Work Type definition            | Application/service catalog       |
+| Decision                    | Business + Risk        | DMN decision tables             | Decision service / rule engine    |
+| Tiered Authority            | Risk + Security        | Tier model (1/2/3)              | RBAC / permission model           |
+| Policy                      | Risk / Compliance      | Policy Bundle                   | Policy engine                     |
+| Data                        | Data governance + IT   | Canonical schema + mapping sets | Data governance platform          |
+| Data Quality & Escrow       | Operations             | Escrow rules                    | Data quality monitoring           |
+| Agent                       | AI platform team       | AgentSpec                       | Agent registry                    |
+| Model                       | AI platform governance | Model dependency declaration    | Model registry                    |
+| Tool                        | IT platform            | Tool permission matrix          | API gateway / service mesh        |
+| Identity                    | Security               | Actor definition                | IAM                               |
+| Security                    | CISO                   | Security constraints            | Security architecture             |
+| Change                      | DevOps                 | Governance repository           | CI/CD pipeline                    |
+| Monitoring                  | Operations             | Monitoring policy               | Observability stack               |
+| Incident                    | Security + Ops         | Incident playbooks              | SOC / incident response           |
+| Assurance                   | Risk + Internal Audit  | Assurance tests                 | Testing frameworks                |
+| Regulatory                  | Legal / Compliance     | Regulatory control mapping      | Compliance platform               |
 
 ---
 
-## SECTION B — Contribution-Ready (GenerativeDriveOS Integration)
+## SECTION B
 
-### B.1 Architectural Relationship
-
-BAI GOS and GenerativeDriveOS are complementary governance planes, not competing architectures.
-
-GenerativeDriveOS operates at the **cognitive infrastructure layer**: how does an AI system reason, store knowledge, enforce constitutional governance, and remain auditable inside the reasoning pipeline?
-
-BAI GOS operates at the **business operating layer**: which Work Types are authorised, at what tier, under what business context, with what evidence of compliance?
-
-Together they form an end-to-end governance stack. Neither is complete without the other for enterprise deployment at scale.
-
-### B.2 Integration Points
-
-**Policy Compiler → Governance Engine**
-BAI GOS's Policy Compiler (Layer 3) produces the business semantics layer upstream of the GenerativeDriveOS Governance Engine. The Compiler provides: which rules apply, for which Work Type, at what tier, with what change control chain. Without this layer, Governance Engine rules are manually maintained rather than business-governed.
-
-**Canonicalization Gate → DKG Evidence Graph**
-BAI GOS's Data Trust Layer (Layer 5) and GenerativeDriveOS's Deterministic Knowledge Gatekeeper address the same structural problem at different layers. The Gate's verdicts (PASS / PASS_WITH_WARNINGS / FAIL_ESCROW) serve as data provenance signals feeding DKG's evidence-first pipeline. The Gate's schema fingerprinting extends the evidence graph from document-level to operational-data-level provenance.
-
-**Business Context Registry → Domain Packs**
-GenerativeDriveOS Domain Packs provide taxonomy, semantic structure, and policy rules for a domain. BAI GOS's Business Context Registry adds the governance wrapper: versioned validity windows, regional scoping, drift detection, and lifecycle states (ACTIVE / DEPRECATED / RETIRED). Domain Packs without Business Context Registry have stable rules but no lifecycle governance.
-
-**Evidence Ledger → Temporal Knowledge Memory**
-BAI GOS's Evidence Layer (Layer 7) provides the business governance binding that makes GenerativeDriveOS's temporal knowledge memory organisationally credible — linking every audit event to the specific governance version and business context that authorised it.
-
-**Tier Model → Execution Apparatus**
-GenerativeDriveOS's controlled proposal pipeline (LLM proposes → user confirms → runner executes) maps to BAI GOS's Tier 1/2/3 model with the addition of: promotion/demotion governance, evidence requirements for tier transitions, and rollback triggers.
-
-**Portfolio Steering → (missing in GenerativeDriveOS)**
-BAI GOS's Layer 8 adds the strategic responsiveness dimension currently absent from GenerativeDriveOS: collective alignment of the agent portfolio to strategic intent, drift detection across Work Types, and governance of the conditions under which autonomy can be expanded.
-
-### B.3 The Bridge Object
-
-The Business Context Registry is the architectural bridge connecting both systems. Context connects a knowledge claim (GenerativeDriveOS) to the business conditions under which it is valid (BAI GOS). The five context layer types — Strategic, Operating, Decision, Data Translation/Interpretation, Exception/Escrow — provide the governed lifecycle that both systems need but neither currently owns as a shared standard.
-
----
-
-## SECTION C — Client-Facing
-
-### C.1 What BAI GOS Is
+### B.1 What BAI GOS Is
 
 The ORAND AI Governance Support Framework is the executable governance architecture that translates business intent into runtime-enforced agent behaviour.
 
@@ -294,29 +256,29 @@ Most organisations deploying AI agents face the same structural gap: governance 
 
 This is what distinguishes BAI GOS from compliance frameworks. Compliance records whether rules were followed. BAI GOS enforces which rules apply, when, to which agents, with what evidence, and with clear rollback when the evidence degrades.
 
-### C.2 The Five Deployment States
+### B.2 The Five Deployment States
 
 AI deployments exist on a spectrum from human augmentation to autonomous multi-agent systems. Each state carries distinct governance requirements. Applying the wrong governance model to a state creates blind spots — particularly at the transitions between states.
 
-| State | Description | Governance Priority |
-|---|---|---|
-| 1 — Augmented Human | AI as tool (e.g., Copilot). Human decides. | Shadow deployment risk. Establish usage boundaries. |
-| 2 — Assisted Workflow | AI inserted into existing process steps. | Inherited process errors accelerate. Process quality precedes AI insertion. |
-| 3 — Orchestrated Agent | Multi-step process purpose-built for AI. Workflow logic joins model reasoning at "The Join". | Governance gap at the join point. This is where BAI GOS enforcement begins. |
-| 4 — Dynamic Agent | AI plans its own execution sequence at runtime. | Action chains become difficult to audit or reverse. Tier model and rollback become mandatory. |
-| 5 — Multi-Agent System | Multiple agents coordinate independently. | Errors launder and amplify across the agent chain without human detection. Portfolio Steering is the only defence. |
+| State                  | Description                                                                                  | Governance Priority                                                                            |
+|------------------------|----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| 1 — Augmented Human    | AI as tool (e.g., Copilot). Human decides.                                                   | Shadow deployment risk. Establish usage boundaries.                                            |
+| 2 — Assisted Workflow  | AI inserted into existing process steps.                                                     | Inherited process errors accelerate. Process quality precedes AI insertion.                    |
+| 3 — Orchestrated Agent | Multi-step process purpose-built for AI. Workflow logic joins model reasoning at "The Join". | Governance gap at the join point. This is where BAI GOS enforcement begins.                    |
+| 4 — Dynamic Agent      | AI plans its own execution sequence at runtime.                                              | Action chains become difficult to audit or reverse. Tier model and rollback become mandatory.  |
+| 5 — Multi-Agent System | Multiple agents coordinate independently.                                                    | Errors launder and amplify across the agent chain without human detection. Portfolio Steering is the only defence. |
 
 **The Transition Trigger:** Review governance whenever adding write access, external communications, or removing human oversight steps. Each of these moves the deployment toward a higher state.
 
-### C.3 The Quick-Reference Governance Diagnostic
+### B.3 The Quick-Reference Governance Diagnostic
 
-| Question | If Yes | If No |
-|---|---|---|
-| Does the AI take action without confirmation? | State 3 or above — enforce tier model | State 1 or 2 — shadow deployment risk |
-| Does the agent plan its own sequence? | State 4 or 5 — enforce audit and rollback | State 1, 2, or 3 |
-| Are multiple agents coordinating? | State 5 — enforce portfolio steering | State 4 or below |
+| Question                                      | If Yes                                    | If No                                 |
+|-----------------------------------------------|-------------------------------------------|---------------------------------------|
+| Does the AI take action without confirmation? | State 3 or above — enforce tier model     | State 1 or 2 — shadow deployment risk |
+| Does the agent plan its own sequence?         | State 4 or 5 — enforce audit and rollback | State 1, 2, or 3                      |
+| Are multiple agents coordinating?             | State 5 — enforce portfolio steering      | State 4 or below                      |
 
-### C.4 What BAI GOS Enables
+### B.4 What BAI GOS Enables
 
 **For the board and C-suite:**
 Clear sight of which agents hold what authority, at what tier, under what evidence. The conditions under which autonomy is expanded or revoked are explicit, not assumed.
@@ -330,7 +292,7 @@ Work Types are governed end-to-end — from strategic intent through to runtime 
 **For operations:**
 Portfolio Steering detects drift before it becomes a strategic problem. Promotion and demotion are evidence-driven, not schedule-driven.
 
-### C.5 Strategic Responsiveness
+### B.5 Strategic Responsiveness
 
 Strategic Responsiveness — the organisation's capacity to keep its agentic architecture aligned with strategy — is the governing concept connecting BAI GOS to the ORAND Business Operating Model.
 
@@ -344,15 +306,14 @@ BAI GOS addresses SR across two failure modes:
 
 ## Appendix: Key Vocabulary
 
-| Term | Definition |
-|---|---|
-| Work Type | End-to-end business flow crossing functional boundaries — the primary unit of agentic deployment and governance |
-| Tier 1 | Machine recommends; human decides |
-| Tier 2 | Machine drafts or executes; human approves before consequential action |
-| Tier 3 | Machine executes autonomously within explicit boundaries, with rollback and monitoring |
-| Canonicalization Gate | The Data Trust Layer service that validates inbound data before any downstream decision or action |
-| Business Context | A governed, time-bounded, scope-bounded set of business conditions under which a Work Type, decision, or policy remains valid |
-| Performed Governance | Governance that is enacted through actual practice — the standard BAI GOS holds human roles to, not declared governance |
-| Strategic Responsiveness | The organisation's capacity to keep its agentic architecture aligned with strategy at two levels: internal coherence and external adaptability |
-| Compliance Drift Indicator | Portfolio Steering signal that measures the gap between declared governance posture and actual runtime behaviour |
-| Interpretation Record | The Data Translation Context layer — holds the assumptions needed for accurate data interpretation at the Canonicalization Gate |
+| Term                       | Definition                                                                                                                                     |
+| Work Type                  | End-to-end business flow crossing functional boundaries — the primary unit of agentic deployment and governance                                |
+| Tier 1                     | Machine recommends; human decides                                                                                                              |
+| Tier 2                     | Machine drafts or executes; human approves before consequential action                                                                         |
+| Tier 3                     | Machine executes autonomously within explicit boundaries, with rollback and monitoring                                                         |
+| Canonicalization Gate      | The Data Trust Layer service that validates inbound data before any downstream decision or action                                              |
+| Business Context           | A governed, time-bounded, scope-bounded set of business conditions under which a Work Type, decision, or policy remains valid                  |
+| Performed Governance       | Governance that is enacted through actual practice — the standard BAI GOS holds human roles to, not declared governance                        |
+| Strategic Responsiveness   | The organisation's capacity to keep its agentic architecture aligned with strategy at two levels: internal coherence and external adaptability |
+| Compliance Drift Indicator | Portfolio Steering signal that measures the gap between declared governance posture and actual runtime behaviour                               |
+| Interpretation Record      | The Data Translation Context layer — holds the assumptions needed for accurate data interpretation at the Canonicalization Gate                |
